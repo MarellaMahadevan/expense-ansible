@@ -2,7 +2,13 @@
   hosts: mysql
   become: yes
   tasks:
-  - name: Install MYSQL server
-    ansible.builtin.package:
-      name: mysql-server
-      state: present
+    - name: Install MYSQL server
+      ansible.builtin.package:
+        name: mysql-server
+        state: present
+
+    - name: start mysql server
+      ansible.builtin.package:
+        name: mysqld
+        state: started
+        enabled: yes
